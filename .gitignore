@@ -6,3 +6,5 @@ dist/
 *.d.ts.map
 .env
 .DS_Store
+.trunk/
+

@@ -4,7 +4,9 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
     "build": "tsc",
     "start": "tsx src/index.ts"
   },
@@ -12,7 +14,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^25.0.10",
     "inquirer": "^13.2.1",
     "save-dev": "^0.0.1-security",
     "ts-node": "^10.9.2",
@@ -22,6 +23,8 @@
   "devDependencies": {
     "@swc/core": "^1.15.11",
     "@types/inquirer": "^9.0.9",
-    "tsx": "^4.21.0"
+    "@types/node": "^25.2.1",
+    "tsx": "^4.21.0",
+    "vitest": "^4.0.18"
   }
 }

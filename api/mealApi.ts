@@ -5,6 +5,8 @@ const BASE_URL = "http://www.themealdb.com/api/json/v1/1";
 async function fetchJson<T>(url: string): Promise<T> {
     const res = await fetch(url);
 
+    // adding try catch block to handle network errors and other fetch-related issues
+
     if (!res.ok) {
         throw new Error(`HTTP error ${res.status}`);
     }
@@ -29,10 +31,15 @@ function extractIngredients(meal: Meal): Ingredient[] {
 }
 
 export async function searchMeal(keyword: string): Promise<Meal[]> {
-    const data = await fetchJson<{ meals: Meal[] | null }>(
+    try {
+        const data = await fetchJson<{ meals: Meal[] | null }>(
         `${BASE_URL}/search.php?s=${keyword}`
     );
-    return data.meals ?? [];
+        return data.meals ?? [];
+} catch (error) {
+    console.error("Error searching meals:", error);
+    return [];
+}
 }
 
 export async function getMealByID(id: string): Promise<Meal | null> {
